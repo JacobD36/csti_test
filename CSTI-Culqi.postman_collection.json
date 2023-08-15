@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "7c9fcb25-176b-4adc-a7bc-1e92289f99fe",
+		"name": "CSTI-Culqi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10052822"
+	},
+	"item": [
+		{
+			"name": "Create Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "pk_test_lsRBKejzCOEEWosw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"juanperez@gmail.com\",\r\n    \"card_number\": \"4625323548956465\",\r\n    \"cvv\": \"333\",\r\n    \"expiration_year\": \"2027\",\r\n    \"expiration_month\": \"11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tokens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "pk_test_lsRBKejzCOEEWosw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/tokens/WXpkbWAXibI3YZCl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tokens",
+						"WXpkbWAXibI3YZCl"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
