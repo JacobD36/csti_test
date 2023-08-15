@@ -20,7 +20,7 @@ Se utilizó NodeJS en su versión 18.16.0.
 
 ```
     POST: '/tokens'
-    GET: 'tokens/:id'
+    GET: '/tokens/:id'
 ```
 
 ### Acceso a la base de datos:
