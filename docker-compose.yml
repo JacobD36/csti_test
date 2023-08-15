@@ -1,0 +1,41 @@
+version: '3'
+services:
+  # Servicio de Node.js
+  node_app:
+    build: .
+    container_name: csti_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dist:/app/dist
+    depends_on:
+      - mongodb
+    networks:
+      - my_network
+    environment:
+      - PORT=${PORT}
+      - MONGO_HOST=mongodb
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    restart: always
+
+  # Servicio de MongoDB
+  mongodb:
+    image: mongo
+    container_name: csti_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - my_network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+
+networks:
+  my_network:
+
+volumes:
+  mongodb_data:
